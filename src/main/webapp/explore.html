@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Hotel Booking Website - Explore</title>
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- CSS file -->
+    <link rel="stylesheet" href="explore.css" />
+  </head>
+  <body>
+    <header class="header" id="home">
+      <nav>
+        <div class="navbar">
+          <div class="logo">
+            <a href="#"><img src="images/logo.jpg" alt="Logo" /></a>
+          </div>
+          <div class="menu_btn">
+            <i class="fas fa-bars"></i>
+          </div>
+        </div>
+
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="popular.html">Popular</a></li>
+          <li><a href="explore.html">Explore</a></li>
+     
+        </ul>
+
+        <button class="btn nav_btn"><a href="book.html">Book Now</a></button>
+      </nav>
+    </header>
+
+    <!-- Explore Section -->
+    <section class="section explore_section" id="explore">
+      <p class="title">EXPLORE</p>
+      <h2 class="tagline">Best places to stay for your next trip!</h2>
+
+      <!-- Location Selection Dropdown -->
+      <div class="location_selector">
+        <label for="location">Choose a location:</label>
+        <select id="location">
+          <option value="" selected>Select Location</option>
+          <option value="DELHI">DELHI</option>
+          <option value="CHENNAI">CHENNAI</option>
+          <option value="KERALA">KERALA</option>
+          <option value="HYDERABAD">HYDERABAD</option>
+          <option value="MAHARASTRA">MAHARASTRA</option>
+          <option value="WESTBENGAL">WESTBENGAL</option>
+          <option value="GUJARAT">GUJARAT</option>
+          <option value="GOA">GOA</option>
+          <option value="CHHATTISGARH">CHHATTISGARH</option>
+          <option value="KARNATAKA">KARNATAKA</option>
+          <option value="ANDHRAPRADESH">ANDHRAPRADESH</option>
+          <option value="PUNJAB">PUNJAB</option>
+          <!-- Add more locations as needed -->
+        </select>
+      </div>
+
+      <!-- Explore Wrapper for Tourist Places -->
+      <div class="explore_wrapper" id="explore_wrapper">
+        <!-- Content will be dynamically added here based on location selection -->
+      </div>
+    </section>
+
+    <!-- JavaScript to Display Tourist Places Based on Location -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const exploreWrapper = document.getElementById("explore_wrapper");
+        const locationSelect = document.getElementById("location");
+
+        // Define tourist places by location
+        const touristPlaces = {
+          DELHI: [
+            { name: "TAJ MAHAL", image: "images/tajmahal.jpg" },
+            { name: "INDIA GATE", image: "images/indiagate.jpg" },
+            { name: "QUTUB MINAR", image: "images/qutub.jpg" },
+            { name: "LOTUS TEMPLE", image: "images/lotus.jpg" },
+            { name: "RED FORT", image: "images/redfort.jpg" },
+          ],
+          CHENNAI: [
+            { name: "OOTY", image: "images/ooty.jpg" },
+            { name: "MAHABALIPURAM", image: "images/mahabalipuram.jpg" },
+            { name: "KANNIYAKUMARI", image: "images/kanyakumari.jpg" },
+            { name: "MADURAI", image: "images/madurai.jpg" },
+            { name: "RAMESHWARAM", image: "images/rameshwaram.jpg" },
+          ],
+          KERALA: [
+            { name: "MUNNAR", image: "images/munar.jpg" },
+            { name: "WAYANAD", image: "images/wayanad.jpg" },
+            { name: "VARKALA", image: "images/varkala.jpg" },
+            { name: "ATHRAPALLI WATERFALLS", image: "images/athirapalli.jpg" },
+            { name: "ALAPPUZHA", image: "images/alappuzha.jpg" },
+          ],
+          HYDERABAD: [
+            { name: "GOLCONDA", image: "images/golconda.jpg" },
+            { name: "CHARMINAR", image: "images/charminar.jpg" },
+            { name: "HUSSAIN SAGAR LAKE", image: "images/hussain.jpg" },
+            { name: "DURGAM CHERUVU", image: "images/durgam.jpg" },
+            { name: "RAMOJI FLIM CITY", image: "images/ramoji.jpeg" },
+          ],
+          MAHARASTRA: [
+            { name: "SHIRIDI", image: "images/siridi.jpg" },
+            { name: "LONAVALA", image: "images/lonavala.jpg" },
+            { name: "MUMBAI", image: "images/mumbai.jpg" },
+            { name: "AJANTA CAVES", image: "images/ajanta.jpg" },
+            { name: "YELLORA CAVES", image: "images/yellora.jpg" },
+          ],
+          WESTBENGAL: [
+            { name: "DARJELING", image: "images/darjeling.jpg" },
+            { name: "HOWRAH BRIDGE", image: "images/howrah.jpg" },
+            { name: "KOLKATA", image: "images/kolkata.jpg" },
+            { name: "VICTORIAL MEMORIAL", image: "images/victoria.jpg" },
+            { name: "KALIMPONG", image: "images/kalimpong.jpg" },
+          ],
+          GUJARAT: [
+            { name: "STATUE OF UNITY", image: "images/statue.jpg" },
+            { name: "DWARAKA", image: "images/dwaraka.jpg" },
+            { name: "VADODARA", image: "images/vadodara.jpg" },
+            { name: "RAJKOT", image: "images/rajkot.jpg" },
+            { name: "GIR NATIONAL PARK", image: "images/gir.jpg" },
+          ],
+          GOA: [
+            { name: "PALOLEM BEACH", image: "images/palolem.jpg" },
+            { name: "BAGA BEACH", image: "images/baga.jpg" },
+            { name: "BUTTERFLY BEACH", image: "images/butterfly.jpg" },
+            { name: "HARVALEM WATERFALLS", image: "images/harvalem.jpg" },
+            { name: "CHAPORA FORT", image: "images/chapora.jpg" },
+          ],
+          CHHATTISGARH: [
+            { name: "CHITRAKOTE WATERFALLS", image: "images/chitrakote.jpg" },
+            { name: "MAHABALITIRATHGARH WATERFALLSPURAM", image: "images/tirathgarh.jpg" },
+            { name: "KANGAR GATI NATIONAL PARK", image: "images/kanger.jpg" },
+            { name: "KOTUMSAR CAVE", image: "images/kotumsar.jpg" },
+            { name: "JAGDALPUR", image: "images/jagdalpur.jpg" },
+          ],
+          KARNATAKA: [
+            { name: "MYSORE PALACE", image: "images/mysore.jpg" },
+            { name: "HAMPI", image: "images/hampi.jpg" },
+            { name: "CHIKKMAGALURU", image: "images/chikmagaluru.jpg" },
+            { name: "NANDI HILLS", image: "images/nandi.jpg" },
+            { name: "GOKARNA", image: "images/gokarna.jpg" },
+          ],
+          ANDHRAPRADESH: [
+            { name: "ARAKU VALLEY", image: "images/araku.jpg" },
+            { name: "TIRUPATI", image: "images/tirupati.jpg" },
+            { name: "RUSHIKONDA BEACH", image: "images/rk.jpg" },
+            { name: "PRAKASAM BARAGE", image: "images/prakasam.jpg" },
+            { name: "GANDIKOTA", image: "images/gandikota.jpg" },
+          ],
+          PUNJAB: [
+            { name: "AMRITSAR", image: "images/amritsar.jpg" },
+            { name: "SRI HARMANDIR SAHIB", image: "images/sri sahib.jpg" },
+            { name: "PATIALA", image: "images/patiala.jpg" },
+            { name: "CHANDIGARH", image: "images/chandigarh.jpg" },
+            { name: "JALLIANWALA BAGH", image: "images/bagh.jpg" },
+          ],
+          // Add more locations and places as needed
+        };
+
+        // Function to display tourist places based on selected location
+        locationSelect.addEventListener("change", function () {
+          const selectedLocation = locationSelect.value;
+          exploreWrapper.innerHTML = ""; // Clear previous results
+
+          if (selectedLocation && touristPlaces[selectedLocation]) {
+            const places = touristPlaces[selectedLocation];
+            let placeCards = "";
+
+            places.forEach((place) => {
+              placeCards += `
+                <div class="explore_card">
+                  <div class="card_img">
+                    <img src="${place.image}" alt="${place.name}" />
+                    <div class="card_title">${place.name}</div>
+                  </div>
+                </div>`;
+            });
+
+            exploreWrapper.innerHTML = placeCards;
+          } else {
+            exploreWrapper.innerHTML = "<p class='title'>No places found for the selected location.</p>";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

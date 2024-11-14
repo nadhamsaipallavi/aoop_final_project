@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Hotel Booking Website - Popular Hotels</title>
+
+    <!-- Font Awesome (for icons) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="popular.css" />
+  </head>
+  <body>
+    <header class="header" id="home">
+      <nav>
+        <div class="navbar">
+          <div class="logo">
+            <a href="#">
+              <img src="images/logo.jpg" alt="Logo" />
+            </a>
+          </div>
+
+          <div class="menu_btn">
+            <i class="fas fa-bars"></i>
+          </div>
+        </div>
+
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="popular.html">Popular</a></li>
+          <li><a href="explore.html">Explore</a></li>
+          </ul>
+
+        <button class="btn nav_btn"><a href="book.html">Book Now</a></button>
+      </nav>
+    </header>
+
+    <!-- Popular Hotels Section -->
+    <section class="popular" id="popular">
+      <div class="section popular_section">
+        <p class="title">POPULAR DESTINATIONS</p>
+        <h2 class="tagline">Find the best hotels in your selected location.</h2>
+        <!-- The content here will be replaced by JavaScript based on the selected location -->
+      </div>
+    </section>
+
+    
+
+    <!-- JavaScript to Display Hotels Based on Selected Location -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const location = urlParams.get("location");
+        const popularSection = document.querySelector(".popular_section");
+
+        // Define hotels by location
+        const hotelsByLocation = {
+          MAHARASTRA: [
+            { name: "Hotel Sahara Star", description: "5 Star hotel in Maharastra.", price: "10,500rs/night", image: "images/sahara star.jpeg" },
+            { name: "JW Marriott Mumbai Juhu", description: "Rich accommodation.", price: "16,500rs/night", image: "images/juhu.jpeg" },
+            { name: "Evershine Resort & Spa", description: "Evershine seamlessly blends modern conveniences.", price: "14,000rs/night", image: "images/evershine-resort.jpg" },
+          ],
+          DELHI: [
+            { name: "Crowne Plaza New Delhi", description: "Chic dining atmosphere.", price: "15,000rs/night", image: "images/crowne.jpeg" },
+            { name: "Novotel New Delhi Aerocity", description: "Get the celebrity treatment.", price: "20,000rs/night", image: "images/novotel.jpg" },
+            { name: "Radisson Blu Plaza", description: "R The Spa features relaxation rooms.", price: "14,000rs/night", image: "images/radisson.jpg" },
+          ],
+          CHENNAI: [
+            { name: "The Leela Palace Chennai", description: "Overlooking the sea.", price: "16,500rs/night", image: "images/leela.jpg" },
+            { name: "Hyatt Regency Chennai", description: "The luxurious Hyatt Regency .", price: "15,500rs/night", image: "images/hyatt.jpg" },
+            { name: "Taj Connemara", description: "Featuring a fitness centre.", price: "14,000rs/night", image: "images/taj chennai.jpg" },
+          ],
+          KERALA: [
+            { name: "Serene Crest Resort", description: "Serene Crest Resort.", price: "10,500rs/night", image: "images/serene.jpg" },
+            { name: "Thekkady Gavi Suites", description: "All guest rooms come with air conditioning.", price: "15,500rs/night", image: "images/thekkady.jpg" },
+            { name: "Misty Range Resorts", description: " Resorts offers certain units with mountain views.", price: "14,000rs/night", image: "images/misty.jpg" },
+          ],
+          GOA: [
+    { name: "Treebo Rock Valley", description: "Luxury beachside resort.", price: "20,000rs/night", image: "images/treebo.jpg" },
+    { name: "Nirvana Hill Resort", description: "High-end resort with pools and spa.", price: "18,000rs/night", image: "images/nirvana.jpg" },
+    { name: "TATA Rio De Goa", description: "Exclusive beachfront resort.", price: "17,000rs/night", image: "images/tata.jpg" }
+  ],
+  CHHATTISGARH: [
+    { name: "FabHotel The Bell", description: "Heritage resort on Lake Pichola.", price: "20,000rs/night", image: "images/fab.jpg" },
+    { name: "HOTEL AMORA ", description: "Historic hotel with royal architecture.", price: "15,000rs/night", image: "images/amora.jpg" },
+    { name: "Hotel Golden - I", description: "Luxurious retreat in Alwar.", price: "18,000rs/night", image: "images/golden.jpg" }
+  ],
+  KARNATAKA: [
+    { name: "The Nest Inn Resort", description: "Upscale hotel with city views.", price: "15,500rs/night", image: "images/nest.jpg" },
+    { name: "Ananth The Grand", description: "Historic hotel in Bengaluru.", price: "14,000rs/night", image: "images/ananth.jpg" },
+    { name: "The Estate Resort", description: "Luxury retreat in coffee plantations.", price: "18,000rs/night", image: "images/estate.jpg" }
+  ],
+  PUNJAB: [
+    { name: "Hotel Aurora Towers", description: "Contemporary hotel with amenities.", price: "12,500rs/night", image: "images/aurora.jpg" },
+    { name: "Bloom Hotel Koregaon Park", description: "Mountain retreat with scenic views.", price: "10,500rs/night", image: "images/bloom.jpg" },
+    { name: "ibis Pune Hinjewadi", description: "Modern hotel with great service.", price: "12,500rs/night", image: "images/iris.jpg" }
+  ],
+  GUJARAT: [
+    { name: "Daksh Eden Greenz ", description: "Luxury near the Golden Temple.", price: "13,000rs/night", image: "images/daksh.jpg" },
+    { name: "The Royal Heritage Tent Resort", description: "Conveniently located in Amritsar.", price: "15,000rs/night", image: "images/royal.jpg" },
+    { name: "The Sky Imperial Hotel Kailash", description: "Upscale stay in Ludhiana.", price: "12,000rs/night", image: "images/sky.jpg" }
+  ],
+  HYDERABAD: [
+    { name: "The Golkonda Hotel", description: "Minutes from the Taj Mahal.", price: "14,500rs/night", image: "images/golkonda.jpg" },
+    { name: "Hotel Deccan Serai", description: "Modern luxury with iconic views.", price: "13,000rs/night", image: "images/deccan.jpg" },
+    { name: "Hotel Deccan Serai", description: "Unmatched views of the Taj Mahal.", price: "20,000rs/night", image: "images/vantage.jpg" }
+  ],
+  ANDHRAPRADESH: [
+    { name: "Eden Park Boutique Hotel", description: "Beachfront hotel with amenities.", price: "11,000rs/night", image: "images/eden.jpg" },
+    { name: "Grand Vijayawada", description: "Comfortable stay in Vijayawada.", price: "19,500rs/night", image: "images/grand.jpg" },
+    { name: "De Crown Luxury Hotel", description: "Luxury with views of Tirumala hills.", price: "15,000rs/night", image: "images/de crown.jpg" }
+  ],
+  WESTBENGAL: [
+    { name: "The Loft Hotel", description: "Historic charm with modern amenities.", price: "14,000rs/night", image: "images/loft.jpg" },
+    { name: "The Grand Asansol", description: "Luxury hotel with gardens.", price: "13,500rs/night", image: "images/asansol.jpg" },
+    { name: "Golden Retreat", description: "Hotel with rooftop pool.", price: "11,000rs/night", image: "images/retreat.jpg" }
+  ],
+
+
+
+
+          // Add more locations and hotels as needed
+        };
+
+        if (location && hotelsByLocation[location.toUpperCase()]) {
+          const selectedHotels = hotelsByLocation[location.toUpperCase()];
+          let hotelCards = "";
+
+          selectedHotels.forEach((hotel) => {
+            hotelCards += `
+              <div class="deal_card">
+                <div class="card_img">
+                  <img src="${hotel.image}" alt="${hotel.name}" />
+                  <div class="card_icons">
+                    <span><i class="fas fa-heart"></i></span>
+                    <span><i class="fas fa-bookmark"></i></span>
+                    <span><i class="fas fa-share-nodes"></i></span>
+                  </div>
+                </div>
+                <div class="card_details">
+                  <h4>${hotel.name}</h4>
+                  <p>${hotel.description}</p>
+                  <h5>Starting from <span>${hotel.price}</span></h5>
+                  <button class="btn"><a href="book.html">Book Now</a></button>
+                </div>
+              </div>`;
+          });
+
+          popularSection.innerHTML = `
+            <div class="section deal_section">
+              <p class="title">Hotels in ${location}</p>
+              <div class="deal_wrapper">
+                ${hotelCards}
+              </div>
+            </div>`;
+        } else {
+          popularSection.innerHTML = "<p class='title'>No hotels found for the selected location.</p>";
+        }
+      });
+    </script>
+  </body>
+</html>

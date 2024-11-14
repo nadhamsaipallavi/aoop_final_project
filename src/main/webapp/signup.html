@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css" />
+   
+    
+</head>
+<body>
+    <div class="login-container">
+        <!-- Logo at top left corner inside container -->
+        <div class="logo">
+            <img src="logo.svg" alt="EduWeb Logo" />
+        </div>
+        <div class="head">
+            <h1>Sign Up</h1>
+        </div>
+        <form id="signup-form" class="form" action="SignupServlet" method="post" onsubmit="return validateForm()">
+
+            <div class="form-control">
+                <label for="username">Username</label>
+                <input type="text" placeholder="Username" id="username" name="username" required />
+                <small id="username-error" class="error-message" style="display:none; color:red;"></small>
+            </div>
+            <div class="form-control">
+                <label for="email">Email</label>
+                <input type="email" placeholder="Email" id="email" name="email" required />
+                <small id="email-error" class="error-message" style="display:none; color:red;"></small>
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input type="password" placeholder="Password" id="password" name="password" required />
+                <small id="password-error" class="error-message" style="display:none; color:red;"></small>
+            </div>
+            <div class="form-control">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" placeholder="Confirm Password" id="confirm-password" name="confirm-password" required />
+                <small id="confirm-password-error" class="error-message" style="display:none; color:red;"></small>
+            </div>
+            <button id="create-acct-btn" type="submit">Create Account</button>
+            <button id="return-btn" type="button" onclick="location.href='login.html'">Return to Login</button>
+        </form>
+    </div>
+<script>
+        function validateForm(event) {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+            var email = document.getElementById("email").value;
+            var valid = true;
+
+            // Clear previous error messages
+            clearErrors();
+
+            // Validation for username
+            if (username.length < 7 || username.length > 10) {
+                displayError("username-error", "Username must be between 7 and 10 characters.");
+                valid = false;
+            }
+
+            // Validation for password
+            if (password.length < 7 || password.length > 10) {
+                displayError("password-error", "Password must be between 7 and 10 characters.");
+                valid = false;
+            }
+
+            // Check if password and confirm password match
+            if (password !== confirmPassword) {
+                displayError("confirm-password-error", "Passwords do not match.");
+                valid = false;
+            }
+
+            // Simple email validation
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                displayError("email-error", "Please enter a valid email address.");
+                valid = false;
+            }
+
+            if (!valid) {
+                event.preventDefault(); // Prevent form submission if invalid
+            }
+        }
+
+        function displayError(elementId, message) {
+            var errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.display = "block";
+        }
+
+        function clearErrors() {
+            var errorElements = document.querySelectorAll(".error-message");
+            errorElements.forEach(function(element) {
+                element.style.display = "none";
+                element.textContent = "";
+            });
+        }
+
+        window.addEventListener("load", function() {
+            document.getElementById("signup-form").addEventListener("submit", validateForm);
+        });
+    </script>
+</body>
+</html>

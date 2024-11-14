@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--Created by Tivotal-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Hotel Booking Website</title>
+
+    <!--font awesome(for icons)-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!--css file-->
+    <link rel="stylesheet" href="payment.css" />
+   
+  </head>
+  <body>
+    <header class="header" id="home">
+      <nav>
+        <div class="navbar">
+          <div class="logo">
+            <a href="#">
+              <img src="images/logo.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="menu_btn">
+            <i class="fas fa-bars"></i>
+          </div>
+        </div>
+
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="popular.html">Popular</a></li>
+          <li><a href="explore.html">Explore</a></li>
+          
+          
+        </ul>
+
+        <button class="btn nav_btn">Book Now</button>
+      </nav>
+      
+    </header>
+</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Payment</title>
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body1>
+    <div class="container">
+        <h2>Hotel Booking Payment</h2>
+        <div class="payment-layout">
+            <form id="paymentForm" onsubmit="calculateBill(event)">
+                <div class="form-control">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-control">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-control">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-control">
+                    <label for="checkin">Check-in Date</label>
+                    <input type="date" id="checkin" name="checkin" required>
+                </div>
+                <div class="form-control">
+                    <label for="checkout">Check-out Date</label>
+                    <input type="date" id="checkout" name="checkout" required>
+                </div>
+                <div class="form-control">
+                    <label for="roomtype">Room Type</label>
+                    <select id="roomtype" name="roomtype" required>
+                        <option value="single">Single</option>
+                        <option value="double">Double</option>
+                        <option value="suite">Suite</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn1">Calculate Bill</button>
+            </form>
+            <div id="bill" class="bill">
+               
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateBill(event) {
+            event.preventDefault();
+            
+            const roomPrices = {
+                single: 1000,
+                double: 2000,
+                suite: 3000
+            };
+
+            const checkinDate = new Date(document.getElementById('checkin').value);
+            const checkoutDate = new Date(document.getElementById('checkout').value);
+            const roomType = document.getElementById('roomtype').value;
+
+            const diffTime = Math.abs(checkoutDate - checkinDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            const roomPrice = roomPrices[roomType];
+            const totalCost = roomPrice * diffDays;
+
+            const billElement = document.getElementById('bill');
+            billElement.innerHTML = `
+                <h3>Booking Summary</h3>
+                <p>Name: ${document.getElementById('name').value}</p>
+                <p>Email: ${document.getElementById('email').value}</p>
+                <p>Phone: ${document.getElementById('phone').value}</p>
+                <p>Check-in Date: ${checkinDate.toDateString()}</p>
+                <p>Check-out Date: ${checkoutDate.toDateString()}</p>
+                <p>Room Type: ${roomType.charAt(0).toUpperCase() + roomType.slice(1)}</p>
+                <p>Total Nights: ${diffDays}</p>
+                <p>Total Cost: ₹${totalCost}</p>
+                
+            `;
+        }
+    </script>
+</body1>
+</html>
+
+</html>
