@@ -43,31 +43,36 @@
       </nav>
       
     </header>
-</body>
+  </body>
      
-<body1>
+  <body1>
     <div class="container">
         <h2>Registration</h2>
-        <form id="bookingForm" action="BookServlet" method="post">
+        <form id="bookingForm" action="BookServlet" method="post" onsubmit="return validateForm()">
             <div class="form-control">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" required>
+                <small id="nameError" class="error-message"></small>
             </div>
             <div class="form-control">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
+                <small id="emailError" class="error-message"></small>
             </div>
             <div class="form-control">
                 <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+                <small id="phoneError" class="error-message"></small>
             </div>
             <div class="form-control">
                 <label for="checkin">Check-in Date</label>
                 <input type="date" id="checkin" name="checkin" required>
+                <small id="checkinError" class="error-message"></small>
             </div>
             <div class="form-control">
                 <label for="checkout">Check-out Date</label>
                 <input type="date" id="checkout" name="checkout" required>
+                <small id="checkoutError" class="error-message"></small>
             </div>
             <div class="form-control">
                 <label for="roomtype">Room Type</label>
@@ -76,11 +81,83 @@
                     <option value="double">Double</option>
                     <option value="suite">Suite</option>
                 </select>
+                <small id="roomtypeError" class="error-message"></small>
             </div>
             <button type="submit" class="btn1">Book Now</button>
         </form>
     </div>
-</body1>
-</html>
-     
+
+    <script>
+        function validateForm() {
+            let valid = true;
+            clearErrors();
+
+            // Validate Name
+            const name = document.getElementById("name").value;
+            if (name.trim() === "") {
+                displayError("nameError", "Name is required.");
+                valid = false;
+            }
+
+            // Validate Email
+            const email = document.getElementById("email").value;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                displayError("emailError", "Invalid email address.");
+                valid = false;
+            }
+
+            // Validate Phone
+            const phone = document.getElementById("phone").value;
+            const phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                displayError("phoneError", "Phone number must be 10 digits.");
+                valid = false;
+            }
+
+            // Validate Check-in Date
+            const checkin = document.getElementById("checkin").value;
+            if (checkin === "") {
+                displayError("checkinError", "Check-in date is required.");
+                valid = false;
+            }
+
+            // Validate Check-out Date
+            const checkout = document.getElementById("checkout").value;
+            if (checkout === "") {
+                displayError("checkoutError", "Check-out date is required.");
+                valid = false;
+            } else if (new Date(checkout) <= new Date(checkin)) {
+                displayError("checkoutError", "Check-out date must be after the check-in date.");
+                valid = false;
+            }
+
+            // Validate Room Type
+            const roomtype = document.getElementById("roomtype").value;
+            if (roomtype === "") {
+                displayError("roomtypeError", "Room type is required.");
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        function displayError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.color = "red";
+        }
+
+        function clearErrors() {
+            const errorElements = document.querySelectorAll(".error-message");
+            errorElements.forEach(function(element) {
+                element.textContent = "";
+            });
+        }
+
+        window.addEventListener("load", function() {
+            document.getElementById("bookingForm").addEventListener("submit", validateForm);
+        });
+    </script>
+  </body1>
 </html>

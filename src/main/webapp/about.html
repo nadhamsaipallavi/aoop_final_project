@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!--Created by Tivotal-->
+  <!-- Created by Tivotal -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Hotel Booking Website</title>
 
-    <!--font awesome(for icons)-->
+    <!-- font awesome (for icons) -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
 
-    <!--css file-->
+    <!-- css file -->
     <link rel="stylesheet" href="about.css" />
   </head>
   <body>
@@ -21,7 +21,7 @@
         <div class="navbar">
           <div class="logo">
             <a href="#">
-              <img src="images/logo.jpg" alt="" />
+              <img src="images/logo.jpg" alt="Logo" />
             </a>
           </div>
 
@@ -35,37 +35,82 @@
           <li><a href="about.html">About</a></li>
           <li><a href="popular.html">Popular</a></li>
           <li><a href="explore.html">Explore</a></li>
-         
-          
         </ul>
 
         <button class="btn nav_btn"><a href="book.html">Book Now</a></button>
       </nav>
-      
     </header>
 
-      <section class="section about_section" id="about">
-        <div class="about_img">
-          <img src="images/about-img.jpg" alt="" />
+    <!-- About Section -->
+    <section class="section about_section" id="about">
+      <div class="about_img">
+        <img src="images/about-img.jpg" alt="About Image" />
+      </div>
+
+      <div class="about_content">
+        <p class="title">ABOUT US</p>
+        <h2 class="tagline">A Whole New Level of Hospitality</h2>
+        <p class="desc">
+          With a focus on quality accommodations, personalized experience, and
+          seamless booking, our platform is dedicated to ensuring that every
+          traveler embarks on their dream holiday with confidence and
+          excitement. We offer an array of world-class amenities designed to
+          cater to both business and leisure travelers. Experience unparalleled
+          hospitality, fine dining, and modern conveniences that make every
+          visit memorable. Your satisfaction is our top priority.
+        </p>
+        <div class="about_btn">
+          <button class="btn">Read More</button>
         </div>
-  
-        <div class="about_content">
-          <p class="title">ABOUT US</p>
-          <h2 class="tagline">A Whole New Level of Hospitality</h2>
-          <p class="desc">
-            With a focus on quality accommodations, personalized experiance, and
-            seamless booking, our platform is dedicated to ensuring that every
-            traveller embarks on their dream holiday with confidance and
-            excitement.
-          </p>
-          <div class="about_btn">
-            <button class="btn">Read More</button>
-          </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery_section" id="gallery">
+      <h2 class="title">OUR MAINTENANCE GALLERY</h2>
+      <div class="gallery_container">
+        <div class="gallery_item">
+          <img src="images/main-1.jpeg" alt="Gallery Image 1" style="max-width: 500px; height: auto;"/>
         </div>
-      </section>
-  
-     
-     
-      </body>
-      </html>
-      
+        <div class="gallery_item">
+          <img src="images/main-2.jpg" alt="Gallery Image 2" style="max-width: 500px; height: auto;"/>
+        </div>
+        <div class="gallery_item">
+          <img src="images/main-3.jpg" alt="Gallery Image 3" style="max-width: 500px; height: auto;"/>
+        </div>
+        <div class="gallery_item">
+          <img src="images/main-4.jpg" alt="Gallery Image 4" style="max-width: 500px; height: auto;"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services_section" id="services">
+      <p class="title">OUR SERVICES</p>
+      <div class="services_container">
+        <div class="service">
+          <i class="fas fa-concierge-bell"></i>
+          <h3>24/7 Room Service</h3>
+          <img src="images/24.jpg"style="max-width: 200px; height: auto;"/>
+          <p>Enjoy round-the-clock room service tailored to your comfort.</p>
+        </div>
+        <div class="service">
+          <i class="fas fa-spa"></i>
+          <h3>Spa and Wellness</h3>
+          <img src="images/spa.jpg"style="max-width: 200px; height: auto;"/>
+          <p>Relax and rejuvenate with our top-notch spa facilities.</p>
+        </div>
+        <div class="service">
+          <i class="fas fa-swimming-pool"></i>
+          <h3>Infinity Pools</h3>
+          <img src="images/pools.jpg"style="max-width: 200px; height: auto;"/>
+          <p>Take a dip and soak in breathtaking views from our pool.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2024 ROYAL CORP. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
